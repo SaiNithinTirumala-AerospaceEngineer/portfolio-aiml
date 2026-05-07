@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sai Nithin Tirumala - AI/ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   NVIDIA DESIGN.md - GPU computing aesthetic
+   Green-black energy, technical power aesthetic
+   Primary: #76b900 (NVIDIA green) Black: #000000
+   Surface: #1a1a1a / #0d0d0d   Text: #e0e0e0
+   Typography: Barlow (900 ultra-bold caps) + mono
+   Layout: Bold, high-contrast, technical authority
+   ═══════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#000000;--bg:#0a0a0a;--bg2:#111111;--bg3:#1a1a1a;--surface:#141414;
+  --green:#76b900;--green2:#8fd100;--green3:#a3e635;--green-dim:#1a2e00;
+  --text:#e0e0e0;--text2:#a0a0a0;--text3:#606060;
+  --border:#1e1e1e;--border2:#2a2a2a;
+  --sans:'Barlow',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.5;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--green)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.n-logo{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green);font-weight:700}
+.n-links{display:flex;gap:2rem;list-style:none}
+.n-links a{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color .2s}
+.n-links a:hover{color:var(--green)}
+.n-cta{background:var(--green);color:var(--black);padding:.4rem 1.3rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;text-decoration:none;transition:background .2s}
+.n-cta:hover{background:var(--green2)}
+
+/* HERO */
+#hero{min-height:100vh;padding:7rem 2rem 5rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+/* NVIDIA-style scanline grid */
+#hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(118,185,0,.04) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(118,185,0,.04) 80px);pointer-events:none}
+/* NVIDIA green glow orb */
+.hero-orb{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(118,185,0,.12) 0%,transparent 65%);top:-100px;right:-100px;pointer-events:none}
+.hero-inner{max-width:1280px;margin:0 auto;width:100%}
+.hero-eyebrow{font-family:var(--mono);font-size:.68rem;color:var(--green);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem}
+.hero-eyebrow::before{content:'▶';font-size:.5rem}
+.hero-title{font-size:clamp(4rem,9vw,8rem);font-weight:900;line-height:.9;letter-spacing:-.04em;text-transform:uppercase;margin-bottom:.8rem}
+.hero-title .green{color:var(--green)}
+.hero-title .dim{color:var(--text3);font-style:italic;font-weight:700}
+.hero-sub{font-size:1rem;color:var(--text2);margin-bottom:2rem;font-weight:300;max-width:600px;line-height:1.6}
+.hero-sub strong{color:var(--text);font-weight:600}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem}
+.hero-cta-row{display:flex;gap:1px}
+.hbtn{padding:.7rem 1.8rem;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;text-decoration:none;transition:all .2s}
+.hbtn-fill{background:var(--green);color:var(--black)}
+.hbtn-fill:hover{background:var(--green2)}
+.hbtn-ghost{background:transparent;border:1px solid var(--border2);color:var(--text2)}
+.hbtn-ghost:hover{border-color:var(--green);color:var(--green)}
+.hero-stats{display:flex;gap:3rem}
+.hstat{text-align:right}
+.hstat-n{font-family:var(--mono);font-size:2rem;font-weight:500;color:var(--green);line-height:1}
+.hstat-l{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text3);margin-top:.2rem}
+
+/* TICKER */
+.ticker-wrap{background:var(--green);padding:.55rem 0;overflow:hidden}
+.ticker-track{display:inline-flex;animation:tick 28s linear infinite;white-space:nowrap}
+.ticker-item{display:inline-flex;align-items:center;gap:.6rem;padding:0 2rem;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--black);font-weight:700}
+.ticker-item::after{content:'◆';font-size:.4rem;opacity:.5}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+section{position:relative}
+.wrap{max-width:1280px;margin:0 auto;padding:5rem 2rem}
+.s-eyebrow{font-family:var(--mono);font-size:.65rem;color:var(--green);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
+.s-eyebrow::before{content:'▶';font-size:.45rem}
+.s-title{font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;letter-spacing:-.04em;text-transform:uppercase;line-height:.95;margin-bottom:.8rem}
+.s-title .green{color:var(--green)}
+
+/* ABOUT */
+#about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:start}
+.about-text{font-size:.9rem;color:var(--text2);line-height:1.85;margin-bottom:1rem;font-weight:300}
+.about-text strong{color:var(--text);font-weight:600}
+.stat-cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:2rem}
+.stat-card{background:var(--bg2);padding:1.2rem;border:none}
+.sc-n{font-family:var(--mono);font-size:1.8rem;font-weight:300;color:var(--green);line-height:1;margin-bottom:.3rem}
+.sc-l{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text3)}
+.edu-list{list-style:none}
+.edu-item{padding:.9rem 0;border-bottom:1px solid var(--border)}
+.edu-item:last-child{border-bottom:none}
+.edu-deg{font-size:.88rem;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:var(--text);margin-bottom:.2rem}
+.edu-sch{font-family:var(--mono);font-size:.72rem;color:var(--green);margin-bottom:.15rem}
+.edu-detail{font-family:var(--mono);font-size:.68rem;color:var(--text3);display:inline-block;border:1px solid var(--border2);padding:.1rem .4rem;margin-top:.15rem}
+
+/* PROJECTS */
+#projects{background:var(--bg)}
+.proj-hero{display:grid;grid-template-columns:1.5fr 1fr;gap:0;border:1px solid var(--border2);margin-bottom:1px}
+.proj-hero-body{padding:3rem;background:var(--surface);position:relative;overflow:hidden}
+.proj-hero-body::after{content:'AI';position:absolute;right:-30px;bottom:-40px;font-size:14rem;font-weight:900;color:rgba(118,185,0,.04);letter-spacing:-.05em;line-height:1;pointer-events:none;text-transform:uppercase}
+.proj-hero-tag{font-family:var(--mono);font-size:.62rem;color:var(--green);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.4rem}
+.proj-hero-tag::before{content:'01'}
+.proj-hero-title{font-size:2rem;font-weight:900;letter-spacing:-.04em;text-transform:uppercase;line-height:.95;margin-bottom:1rem}
+.proj-hero-title em{font-style:italic;color:var(--green);display:block;font-size:.65em;letter-spacing:-.01em}
+.proj-hero-desc{font-size:.85rem;color:var(--text2);line-height:1.8;margin-bottom:1.5rem;font-weight:300}
+.proj-tags{display:flex;gap:.3rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.ptag{font-family:var(--mono);font-size:.62rem;padding:.18rem .5rem;background:var(--green-dim);border:1px solid rgba(118,185,0,.25);color:var(--green)}
+.proj-link{font-family:var(--mono);font-size:.7rem;color:var(--green);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.4rem;transition:opacity .2s}
+.proj-link:hover{opacity:.7}
+.proj-hero-stats{padding:3rem;background:var(--bg3);display:flex;flex-direction:column;gap:0}
+.phs-row{padding:1.2rem 0;border-bottom:1px solid var(--border)}
+.phs-row:last-child{border-bottom:none}
+.phs-label{font-family:var(--mono);font-size:.62rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem}
+.phs-val{font-size:.88rem;color:var(--text);font-weight:600}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--border)}
+.proj-card{background:var(--bg);padding:1.8rem;transition:background .2s}
+.proj-card:hover{background:var(--surface)}
+.pc-tag{font-family:var(--mono);font-size:.6rem;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.3rem}
+.pc-tag::before{content:'▶';font-size:.4rem;color:var(--green)}
+.pc-title{font-size:.95rem;font-weight:700;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.4rem}
+.pc-desc{font-size:.8rem;color:var(--text2);line-height:1.75;margin-bottom:1rem;font-weight:300}
+
+/* EXPERIENCE */
+#experience{background:var(--bg2)}
+.exp-grid{display:grid;grid-template-columns:240px 1fr;gap:0}
+.exp-sidebar{border-right:1px solid var(--border)}
+.exp-tab{display:block;padding:.9rem 1.2rem;cursor:pointer;border:none;background:transparent;width:100%;text-align:left;border-bottom:1px solid var(--border);transition:background .15s;position:relative}
+.exp-tab:hover{background:var(--bg3)}
+.exp-tab.active{background:var(--green-dim)}
+.exp-tab.active::after{content:'';position:absolute;right:0;top:0;bottom:0;width:2px;background:var(--green)}
+.exp-tab-co{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:var(--text2);display:block;margin-bottom:.15rem;transition:color .15s}
+.exp-tab.active .exp-tab-co,.exp-tab:hover .exp-tab-co{color:var(--green)}
+.exp-tab-role{font-family:var(--mono);font-size:.62rem;color:var(--text3);letter-spacing:.05em}
+.exp-panel{display:none;padding:2.5rem}
+.exp-panel.active{display:block;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateX(6px)}to{opacity:1;transform:translateX(0)}}
+.ep-role{font-size:1.5rem;font-weight:900;text-transform:uppercase;letter-spacing:-.03em;margin-bottom:.3rem}
+.ep-co{font-family:var(--mono);font-size:.72rem;color:var(--green);margin-bottom:.2rem;letter-spacing:.05em}
+.ep-period{font-family:var(--mono);font-size:.65rem;color:var(--text3);margin-bottom:1.2rem}
+.ep-desc{font-size:.88rem;color:var(--text2);line-height:1.85;margin-bottom:1.2rem;font-weight:300}
+.ep-tags{display:flex;gap:.3rem;flex-wrap:wrap}
+.etag{font-family:var(--mono);font-size:.62rem;padding:.2rem .5rem;background:var(--green-dim);border:1px solid rgba(118,185,0,.2);color:var(--green)}
+
+/* SKILLS */
+#skills{background:var(--bg)}
+.skills-master{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.skill-block{background:var(--bg);padding:1.8rem}
+.sb-title{font-family:var(--mono);font-size:.62rem;color:var(--green);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+.skill-row{display:flex;align-items:center;gap:.8rem;margin-bottom:.7rem}
+.sk-name{font-size:.82rem;color:var(--text2);flex:1;font-weight:300}
+.sk-bar{height:2px;flex:0 0 70px;background:var(--bg3);position:relative}
+.sk-fill{height:100%;background:var(--green);animation:barG 1.4s cubic-bezier(.16,1,.3,1) both}
+@keyframes barG{from{width:0}}
+.sk-val{font-family:var(--mono);font-size:.6rem;color:var(--text3);min-width:22px;text-align:right}
+
+/* CONTACT */
+#contact{background:var(--bg2);border-top:1px solid var(--border)}
+.contact-wrap{max-width:900px;margin:0 auto;padding:5rem 2rem;text-align:center}
+.contact-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--green-dim);border:1px solid rgba(118,185,0,.25);color:var(--green);padding:.3rem .9rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2rem}
+.contact-title{font-size:clamp(3rem,6vw,5rem);font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.9;margin-bottom:1.5rem}
+.contact-title .green{color:var(--green)}
+.contact-sub{font-size:.9rem;color:var(--text2);line-height:1.8;margin-bottom:2.5rem;font-weight:300}
+.contact-cards{display:flex;justify-content:center;gap:1px;flex-wrap:wrap;background:var(--border)}
+.cc{background:var(--bg2);padding:1.2rem 1.8rem;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:.3rem;transition:background .2s;min-width:160px}
+.cc:hover{background:var(--bg3)}
+.cc-label{font-family:var(--mono);font-size:.6rem;color:var(--text3);letter-spacing:.15em;text-transform:uppercase}
+.cc-val{font-size:.78rem;color:var(--text);font-weight:600;text-align:center;word-break:break-all}
+footer{background:var(--black);border-top:1px solid var(--border);padding:1.2rem 2rem;display:flex;justify-content:space-between;font-family:var(--mono);font-size:.62rem;color:var(--text3);flex-wrap:wrap;gap:.4rem}
+
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}.d4{transition-delay:.24s}.d5{transition-delay:.3s}.d6{transition-delay:.36s}
+
+@media(max-width:960px){
+  .about-grid,.proj-hero,.exp-grid{grid-template-columns:1fr}
+  .skills-master{grid-template-columns:1fr}
+  .n-links{display:none}
+  nav{padding:.8rem 1.2rem}
+  .wrap{padding:3.5rem 1.2rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="n-logo">▶ SNT // AI · ML · Engineer</div>
+  <ul class="n-links">
+    <li><a href="#about">Profile</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:tirumalasainithin392@gmail.com" class="n-cta">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">AI · ML · Aerospace Engineer · Available Sept 2026</div>
+    <h1 class="hero-title">
+      Sai<br>
+      <span class="green">Nithin</span><br>
+      <span class="dim">Tirumala</span>
+    </h1>
+    <p class="hero-sub">AI/ML engineer building at the intersection of <strong>aerospace engineering and intelligent systems</strong>. VTOL aerodynamic optimisation using AI, deep learning at IIT Hyderabad, three production ML models, and embedded AI pipelines - targeting Boeing AI, Thales, Rolls-Royce Digital, and UK defence AI roles.</p>
+    <div class="hero-bottom">
+      <div class="hero-cta-row">
+        <a href="#projects" class="hbtn hbtn-fill">View AI Projects</a>
+        <a href="#contact" class="hbtn hbtn-ghost" style="margin-left:1px">Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-n">4+</div><div class="hstat-l">AI/ML Projects</div></div>
+        <div class="hstat"><div class="hstat-n">IIT-H</div><div class="hstat-l">AI Research</div></div>
+        <div class="hstat"><div class="hstat-n">MSc</div><div class="hstat-l">Bristol 2026</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item">Hybrid VTOL AI Optimisation</span>
+    <span class="ticker-item">Deep Learning · IIT Hyderabad</span>
+    <span class="ticker-item">Face Detection · CNN</span>
+    <span class="ticker-item">ML Models · Bharat Intern</span>
+    <span class="ticker-item">MSc Aerospace · Bristol</span>
+    <span class="ticker-item">Python · scikit-learn · pandas</span>
+    <span class="ticker-item">Hybrid VTOL AI Optimisation</span>
+    <span class="ticker-item">Deep Learning · IIT Hyderabad</span>
+    <span class="ticker-item">Face Detection · CNN</span>
+    <span class="ticker-item">ML Models · Bharat Intern</span>
+    <span class="ticker-item">MSc Aerospace · Bristol</span>
+    <span class="ticker-item">Python · scikit-learn · pandas</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="rv">
+        <div class="s-eyebrow">Profile</div>
+        <h2 class="s-title">AI Meets <span class="green">Aerospace</span></h2>
+        <p class="about-text">I sit at the intersection of two high-stakes domains: <strong>aerospace engineering</strong> and <strong>artificial intelligence</strong>. My major graduation project used AI algorithms to optimise a Hybrid VTOL wing configuration - bridging aerodynamic design with intelligent computation.</p>
+        <p class="about-text">At <strong>IIT Hyderabad</strong>, I completed an AI and Deep Learning workshop building real-time face detection with CNNs. At <strong>Bharat Intern</strong>, I built three production-grade ML models. My MSc research at <strong>Bristol</strong> is expanding this foundation into aerospace-specific AI applications.</p>
+        <p class="about-text">My embedded systems background - <strong>13 hardware platforms at IIT Hyderabad FWC</strong> - gives me something most AI engineers lack: the ability to deploy intelligent systems to bare-metal hardware, FPGA fabric, and ARM processors.</p>
+        <div class="stat-cards">
+          <div class="stat-card"><div class="sc-n">3</div><div class="sc-l">ML Models shipped</div></div>
+          <div class="stat-card"><div class="sc-n">IIT-H</div><div class="sc-l">AI Research intern</div></div>
+          <div class="stat-card"><div class="sc-n">13</div><div class="sc-l">Embedded platforms</div></div>
+          <div class="stat-card"><div class="sc-n">8.48</div><div class="sc-l">B.Tech CGPA</div></div>
+        </div>
+      </div>
+      <div class="rv d2">
+        <div class="s-eyebrow">Education</div>
+        <ul class="edu-list">
+          <li class="edu-item">
+            <div class="edu-deg">MSc Aerospace Engineering</div>
+            <div class="edu-sch">University of Bristol</div>
+            <div class="edu-detail">2024–2026 · Expected Distinction</div>
+          </li>
+          <li class="edu-item">
+            <div class="edu-deg">B.Tech Aeronautical Engineering</div>
+            <div class="edu-sch">Malla Reddy CET</div>
+            <div class="edu-detail">2020–2024 · CGPA 8.48 · Top 5 in Batch</div>
+          </li>
+          <li class="edu-item">
+            <div class="edu-deg">Class 12</div>
+            <div class="edu-sch">New Era Jr College, Hyderabad</div>
+            <div class="edu-detail">2020 · 92.5% · Top 3 in Class</div>
+          </li>
+          <li class="edu-item">
+            <div class="edu-deg">Class 10</div>
+            <div class="edu-sch">St. Adam's High School, Hyderabad</div>
+            <div class="edu-detail">2018 · CGPA 9.8 · School Topper</div>
+          </li>
+        </ul>
+        <div style="margin-top:1.5rem">
+          <div class="s-eyebrow">Key Certifications</div>
+          <div style="display:flex;flex-direction:column;gap:.6rem;margin-top:.8rem">
+            <div style="font-size:.82rem;color:var(--text2);padding:.5rem;border:1px solid var(--border)">AI &amp; Deep Learning · <span style="color:var(--green);font-family:var(--mono);font-size:.72rem">IIT Hyderabad</span></div>
+            <div style="font-size:.82rem;color:var(--text2);padding:.5rem;border:1px solid var(--border)">Machine Learning with Python · <span style="color:var(--green);font-family:var(--mono);font-size:.72rem">IBM Developer Skills Network</span></div>
+            <div style="font-size:.82rem;color:var(--text2);padding:.5rem;border:1px solid var(--border)">Generative AI &amp; ChatGPT Bootcamp · <span style="color:var(--green);font-family:var(--mono);font-size:.72rem">CareerXClub</span></div>
+            <div style="font-size:.82rem;color:var(--text2);padding:.5rem;border:1px solid var(--border)">Python Data Structures · <span style="color:var(--green);font-family:var(--mono);font-size:.72rem">Coursera</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="s-eyebrow rv">Work</div>
+    <h2 class="s-title rv"><span class="green">AI/ML</span> Projects</h2>
+
+    <!-- FEATURED -->
+    <div class="proj-hero rv" style="margin-top:2rem">
+      <div class="proj-hero-body">
+        <div class="proj-hero-tag">Featured · Major Graduation Project</div>
+        <h3 class="proj-hero-title">
+          <em>Hybrid VTOL</em>
+          Wing Design<br>Using AI Algorithms
+        </h3>
+        <p class="proj-hero-desc">Major graduation project applying artificial intelligence algorithms to aerodynamic optimisation of a Hybrid Vertical Take-Off and Landing aircraft. AI-driven design space exploration reduces manual iteration and identifies geometrically superior wing configurations for the complex VTOL transition flight regime.</p>
+        <div class="proj-tags">
+          <span class="ptag">Aerodynamics</span><span class="ptag">AI Optimisation</span><span class="ptag">VTOL Design</span><span class="ptag">Wing Geometry</span><span class="ptag">Machine Learning</span><span class="ptag">CFD</span>
+        </div>
+        <a href="#" class="proj-link">View Project →</a>
+      </div>
+      <div class="proj-hero-stats">
+        <div class="phs-row"><div class="phs-label">Domain</div><div class="phs-val">Aerospace AI</div></div>
+        <div class="phs-row"><div class="phs-label">Type</div><div class="phs-val">Major Graduation Project</div></div>
+        <div class="phs-row"><div class="phs-label">Institution</div><div class="phs-val">B.Tech Final Year</div></div>
+        <div class="phs-row"><div class="phs-label">Application</div><div class="phs-val">Hybrid VTOL Aircraft</div></div>
+        <div class="phs-row"><div class="phs-label">Outcome</div><div class="phs-val">AI-optimised wing config</div></div>
+      </div>
+    </div>
+
+    <!-- GRID -->
+    <div class="proj-grid rv" style="margin-top:1px">
+      <div class="proj-card d1">
+        <div class="pc-tag">02 · Deep Learning · IIT Hyderabad</div>
+        <div class="pc-title">Face Detection · CNN</div>
+        <div class="pc-desc">Real-time face detection pipeline built at IIT Hyderabad AI workshop. Convolutional neural network architecture, data preprocessing, training pipeline, and inference optimisation.</div>
+        <div class="proj-tags"><span class="ptag">CNN</span><span class="ptag">Python</span><span class="ptag">OpenCV</span><span class="ptag">Deep Learning</span></div>
+      </div>
+      <div class="proj-card d2">
+        <div class="pc-tag">03 · ML Engineering · Bharat Intern</div>
+        <div class="pc-title">ML Models: House · Iris · Wine</div>
+        <div class="pc-desc">Three production ML models: regression-based house price prediction, multiclass Iris species classification, ensemble wine quality prediction. Full pipeline from raw data to evaluation metrics.</div>
+        <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">scikit-learn</span><span class="ptag">pandas</span><span class="ptag">Regression</span></div>
+      </div>
+      <div class="proj-card d3">
+        <div class="pc-tag">04 · UAV Systems · Propulsion AI</div>
+        <div class="pc-title">Propulsion Design · Gesture UAV</div>
+        <div class="pc-desc">Motor selection, thrust sizing, and ESC specification for a gesture-controlled UAV. AI-assisted design optimisation for propulsion-gesture control integration.</div>
+        <div class="proj-tags"><span class="ptag">UAV</span><span class="ptag">Propulsion</span><span class="ptag">Gesture Control</span></div>
+      </div>
+      <div class="proj-card d4">
+        <div class="pc-tag">05 · Embedded AI · IIT Hyderabad</div>
+        <div class="pc-title">13-Platform Embedded Systems</div>
+        <div class="pc-desc">FPGA, ARM Cortex-M4, ESP32 OTA across 13 platforms - the hardware foundation that makes edge AI deployment possible. Real-time embedded systems on physical hardware.</div>
+        <div class="proj-tags"><span class="ptag">FPGA</span><span class="ptag">ARM M4</span><span class="ptag">Edge AI</span><span class="ptag">FreeRTOS</span></div>
+      </div>
+      <div class="proj-card d5">
+        <div class="pc-tag">06 · CAE Simulation · Simulation Lab</div>
+        <div class="pc-title">FEA / CFD Simulation Studies</div>
+        <div class="pc-desc">Structural and thermal FEA simulation of aerospace components with ANSYS. Simulation data feeds directly into ML-based surrogate model development.</div>
+        <div class="proj-tags"><span class="ptag">ANSYS</span><span class="ptag">FEA</span><span class="ptag">CFD</span><span class="ptag">Simulation</span></div>
+      </div>
+      <div class="proj-card d6">
+        <div class="pc-tag">07 · Security · Supraja Technologies</div>
+        <div class="pc-title">Ethical Hacking &amp; Cyber Security</div>
+        <div class="pc-desc">Penetration testing and vulnerability assessment - applicable to adversarial AI, model security, and embedded systems threat modelling in safety-critical aerospace AI.</div>
+        <div class="proj-tags"><span class="ptag">Security</span><span class="ptag">Pentest</span><span class="ptag">Vulnerabilities</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="s-eyebrow rv">Career</div>
+    <h2 class="s-title rv"><span class="green">Professional</span> Experience</h2>
+    <div class="exp-grid rv d2">
+      <div class="exp-sidebar">
+        <button class="exp-tab active" onclick="showA('fwc',this)">
+          <span class="exp-tab-co">IIT Hyderabad · FWC</span>
+          <span class="exp-tab-role">AI + Embedded Research</span>
+        </button>
+        <button class="exp-tab" onclick="showA('bharat',this)">
+          <span class="exp-tab-co">Bharat Intern</span>
+          <span class="exp-tab-role">ML Engineering</span>
+        </button>
+        <button class="exp-tab" onclick="showA('camp',this)">
+          <span class="exp-tab-co">CAMP Systems</span>
+          <span class="exp-tab-role">Aircraft Analyst</span>
+        </button>
+        <button class="exp-tab" onclick="showA('sim',this)">
+          <span class="exp-tab-co">Simulation Lab</span>
+          <span class="exp-tab-role">CAE / FEA Simulation</span>
+        </button>
+        <button class="exp-tab" onclick="showA('supraja',this)">
+          <span class="exp-tab-co">Supraja Technologies</span>
+          <span class="exp-tab-role">Ethical Hacking</span>
+        </button>
+        <button class="exp-tab" onclick="showA('bhel',this)">
+          <span class="exp-tab-co">BHEL Hyderabad</span>
+          <span class="exp-tab-role">Project Trainee</span>
+        </button>
+      </div>
+      <div>
+        <div id="ea-fwc" class="exp-panel active">
+          <div class="ep-role">Research Intern · AI + Embedded</div>
+          <div class="ep-co">Future Wireless Communications · IIT Hyderabad · FWC22187</div>
+          <div class="ep-period">December 2023 – March 2024</div>
+          <p class="ep-desc">AI and Deep Learning workshop covering CNNs and real-time face detection. Hardware programming across 13 embedded platforms - the physical layer that enables edge AI. FPGA Verilog, ARM Cortex-M4 with FreeRTOS, ESP32 OTA. All developed in Termux + Neovim on Android. Supervised by Prof. G.V.V. Sharma.</p>
+          <div class="ep-tags"><span class="etag">AI / Deep Learning</span><span class="etag">CNN</span><span class="etag">FPGA</span><span class="etag">ARM M4</span><span class="etag">FreeRTOS</span><span class="etag">Python</span></div>
+        </div>
+        <div id="ea-bharat" class="exp-panel">
+          <div class="ep-role">ML Engineering Intern</div>
+          <div class="ep-co">Bharat Intern</div>
+          <div class="ep-period">August 2023 – September 2023</div>
+          <p class="ep-desc">Three production ML models: regression-based house price prediction (scikit-learn, pandas, feature engineering), multiclass Iris species classification, and wine quality prediction using ensemble methods. Full pipeline from raw data preprocessing through cross-validation to evaluation metric reporting.</p>
+          <div class="ep-tags"><span class="etag">Python</span><span class="etag">scikit-learn</span><span class="etag">pandas</span><span class="etag">Regression</span><span class="etag">Classification</span><span class="etag">Ensemble</span></div>
+        </div>
+        <div id="ea-camp" class="exp-panel">
+          <div class="ep-role">Associate Aircraft Analyst</div>
+          <div class="ep-co">CAMP Systems Private Limited</div>
+          <div class="ep-period">November 2024 – May 2025</div>
+          <p class="ep-desc">Aircraft maintenance tracking and compliance analysis. AME documentation, airworthiness directives, maintenance programme data - the high-stakes domain context that shapes responsible AI development in aviation safety-critical systems.</p>
+          <div class="ep-tags"><span class="etag">Aviation</span><span class="etag">AME</span><span class="etag">Airworthiness</span><span class="etag">Safety-Critical</span></div>
+        </div>
+        <div id="ea-sim" class="exp-panel">
+          <div class="ep-role">CAE Engineer Intern</div>
+          <div class="ep-co">Simulation Lab</div>
+          <div class="ep-period">June 2024 – August 2024</div>
+          <p class="ep-desc">FEA and CFD simulation of aerospace components using ANSYS. Simulation data is the foundation of ML surrogate modelling - I understand both the physics simulation and the ML layer that replaces expensive compute.</p>
+          <div class="ep-tags"><span class="etag">ANSYS</span><span class="etag">FEA</span><span class="etag">CFD</span><span class="etag">MATLAB</span></div>
+        </div>
+        <div id="ea-supraja" class="exp-panel">
+          <div class="ep-role">Ethical Hacking Intern</div>
+          <div class="ep-co">Supraja Technologies</div>
+          <div class="ep-period">February 2023 – June 2023</div>
+          <p class="ep-desc">Penetration testing and vulnerability assessment. Relevant to adversarial ML, model robustness, and AI security - understanding attack vectors is essential for deploying AI in safety-critical aerospace environments.</p>
+          <div class="ep-tags"><span class="etag">Security</span><span class="etag">Penetration Testing</span><span class="etag">Adversarial AI</span></div>
+        </div>
+        <div id="ea-bhel" class="exp-panel">
+          <div class="ep-role">Project Trainee</div>
+          <div class="ep-co">BHEL Hyderabad</div>
+          <div class="ep-period">July 2023 – August 2023</div>
+          <p class="ep-desc">Steam and gas turbine manufacturing study at industrial scale - the domain knowledge foundation for AI applications in predictive maintenance, turbomachinery health monitoring, and industrial AI in propulsion.</p>
+          <div class="ep-tags"><span class="etag">Turbomachinery</span><span class="etag">Predictive Maintenance</span><span class="etag">Industrial AI</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="s-eyebrow rv">Capabilities</div>
+    <h2 class="s-title rv"><span class="green">Technical</span> Stack</h2>
+    <div class="skills-master rv d2">
+      <div class="skill-block">
+        <div class="sb-title">AI / Machine Learning</div>
+        <div class="skill-row"><span class="sk-name">Machine Learning</span><div class="sk-bar"><div class="sk-fill" style="width:82%"></div></div><span class="sk-val">82</span></div>
+        <div class="skill-row"><span class="sk-name">Deep Learning / CNNs</span><div class="sk-bar"><div class="sk-fill" style="width:75%"></div></div><span class="sk-val">75</span></div>
+        <div class="skill-row"><span class="sk-name">scikit-learn</span><div class="sk-bar"><div class="sk-fill" style="width:80%"></div></div><span class="sk-val">80</span></div>
+        <div class="skill-row"><span class="sk-name">pandas / NumPy</span><div class="sk-bar"><div class="sk-fill" style="width:82%"></div></div><span class="sk-val">82</span></div>
+        <div class="skill-row"><span class="sk-name">Generative AI</span><div class="sk-bar"><div class="sk-fill" style="width:75%"></div></div><span class="sk-val">75</span></div>
+      </div>
+      <div class="skill-block">
+        <div class="sb-title">Programming</div>
+        <div class="skill-row"><span class="sk-name">Python</span><div class="sk-bar"><div class="sk-fill" style="width:86%"></div></div><span class="sk-val">86</span></div>
+        <div class="skill-row"><span class="sk-name">C / C++</span><div class="sk-bar"><div class="sk-fill" style="width:90%"></div></div><span class="sk-val">90</span></div>
+        <div class="skill-row"><span class="sk-name">Java</span><div class="sk-bar"><div class="sk-fill" style="width:70%"></div></div><span class="sk-val">70</span></div>
+        <div class="skill-row"><span class="sk-name">Verilog HDL</span><div class="sk-bar"><div class="sk-fill" style="width:75%"></div></div><span class="sk-val">75</span></div>
+        <div class="skill-row"><span class="sk-name">MATLAB</span><div class="sk-bar"><div class="sk-fill" style="width:78%"></div></div><span class="sk-val">78</span></div>
+      </div>
+      <div class="skill-block">
+        <div class="sb-title">Aerospace + Domain</div>
+        <div class="skill-row"><span class="sk-name">Aerodynamics</span><div class="sk-bar"><div class="sk-fill" style="width:85%"></div></div><span class="sk-val">85</span></div>
+        <div class="skill-row"><span class="sk-name">ANSYS (FEA/CFD)</span><div class="sk-bar"><div class="sk-fill" style="width:75%"></div></div><span class="sk-val">75</span></div>
+        <div class="skill-row"><span class="sk-name">FPGA / ARM (Edge AI)</span><div class="sk-bar"><div class="sk-fill" style="width:78%"></div></div><span class="sk-val">78</span></div>
+        <div class="skill-row"><span class="sk-name">AME / Aviation Systems</span><div class="sk-bar"><div class="sk-fill" style="width:80%"></div></div><span class="sk-val">80</span></div>
+        <div class="skill-row"><span class="sk-name">Cyber Security</span><div class="sk-bar"><div class="sk-fill" style="width:70%"></div></div><span class="sk-val">70</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="contact-badge rv">▶ Open to AI/ML Roles · Sept 2026</div>
+    <h2 class="contact-title rv">Build<br><span class="green">Intelligent</span><br>Systems.</h2>
+    <p class="contact-sub rv">Targeting AI/ML engineering roles in aerospace and defence - Boeing AI, Thales, Rolls-Royce Digital, BAE Systems AI, and UK tech companies. Available September 2026 on completion of MSc at the University of Bristol.</p>
+    <div class="contact-cards rv d2">
+      <a href="mailto:tirumalasainithin392@gmail.com" class="cc">
+        <span class="cc-label">Email</span>
+        <span class="cc-val">tirumalasainithin392@gmail.com</span>
+      </a>
+      <a href="tel:+447352686712" class="cc">
+        <span class="cc-label">Phone</span>
+        <span class="cc-val">+44 7352686712</span>
+      </a>
+      <a href="https://linkedin.com/in/tirumala-sai-nithin-6bb405213" target="_blank" class="cc">
+        <span class="cc-label">LinkedIn</span>
+        <span class="cc-val">tirumala-sai-nithin</span>
+      </a>
+      <a href="https://github.com/SaiNithinTirumala-AerospaceEngineer" target="_blank" class="cc">
+        <span class="cc-label">GitHub</span>
+        <span class="cc-val">SaiNithinTirumala-AerospaceEngineer</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Sai Nithin Tirumala · AI/ML Engineer</span>
+  <span>MSc Aerospace Engineering · University of Bristol · 2026</span>
+</footer>
+
+<script>
+function showA(id,btn){
+  document.querySelectorAll('.exp-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.exp-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('ea-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');obs.unobserve(x.target)}})},{threshold:.07});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+window.addEventListener('scroll',()=>{
+  let cur='';
+  document.querySelectorAll('section[id]').forEach(s=>{if(window.scrollY>=s.offsetTop-80)cur=s.id});
+  document.querySelectorAll('.n-links a').forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--green)':'';});
+},{passive:true});
+</script>
+</body>
+</html>
